@@ -1,10 +1,12 @@
 class Employees {
     #salary;
     #isHired = true;
+    static #allEmployees = [];
     constructor(name, position, salary) {
         this.name = name;
         this.position = position;
         this.#salary = salary;
+        Employees.#allEmployees.push(this);
     }
     getSalary() {
         return this.#salary;
@@ -17,6 +19,16 @@ class Employees {
     }
     setStatus(command) {
         command === "hire" ? (this.#isHired = true) : (this.#isHired = false);
+    }
+
+    static getEmployees() {
+        return Employees.#allEmployees;
+    }
+    static getTotalPayroll() {
+        return Employees.#allEmployees.reduce(
+            (acc, cur) => acc + cur.#salary,
+            0
+        );
     }
 }
 
