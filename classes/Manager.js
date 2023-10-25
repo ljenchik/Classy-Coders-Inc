@@ -12,6 +12,9 @@ class Manager extends Employees {
     setEmployeesManaged(employee) {
         this.#employeesManaged.push(employee);
     }
+    promote(newPosition) {
+        this.position = newPosition;
+    }
 }
 
 module.exports = {

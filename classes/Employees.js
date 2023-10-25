@@ -12,6 +12,9 @@ class Employees {
         return this.#salary;
     }
     setSalary(amount) {
+        if (amount < 0) {
+            throw new Error("Salary cannot be negative");
+        }
         this.#salary = amount;
     }
     getStatus() {
@@ -29,6 +32,10 @@ class Employees {
             (acc, cur) => acc + cur.#salary,
             0
         );
+    }
+    promote(newPosition, newSalary) {
+        this.position = newPosition;
+        this.#salary = newSalary;
     }
 }
 
